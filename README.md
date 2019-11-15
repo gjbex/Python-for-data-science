@@ -9,8 +9,9 @@ For information on the training, see the website
 
 1. [`python_for_data_science.pptx`](python_for_data_science.pptx): PowerPoint
    presentation used for the training.
-1. [`source-code`](source-code): directory that contains sample code written to
-   develop the slides and illustrate concepts.
+1. [`hands-on`](hands-on): Jupyter notebooks for hands-on sessions.
+1. [`source-code`](source-code): sample code written to develop the slides and
+   illustrate concepts.
 1. [`environment.yml`](environment.yml): conda environment file intended to be
    cross-platform.
 1. [`python_for_data_science_linux64_conda_specs.txt`](python_for_data_science_linux64_conda_specs.txt):
