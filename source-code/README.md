@@ -8,6 +8,7 @@ to create it.  There is some material not covered in the presentation as well.
 * Python version: at least 3.6
 * Packages (names listed that can be used with `pip` or `conda` to install):
   * pandas
+  * xlrd
   * seaborn
   * holoviews
   * sqlalchemy

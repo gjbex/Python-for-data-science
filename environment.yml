@@ -16,3 +16,4 @@ dependencies:
   - seaborn
   - shapely
   - sqlalchemy
+  - xlrd
