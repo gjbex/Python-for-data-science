@@ -6,23 +6,19 @@ to create it.  There is some material not covered in the presentation as well.
 ## Requirements
 
 * Python version: at least 3.6
-* Packages:
+* Packages (names listed that can be used with `pip` or `conda` to install):
   * pandas
   * seaborn
   * holoviews
   * sqlalchemy
-  * folium
   * matplotlib
-  * numpy
   * scipy
   * geopandas
   * shapely
-  * bs4
+  * beautifulsoup4
   * networkx
-  * Jupyter notebook
-* Optional packages
-  * gdal
-  * fiona
+  * jupyter
+  * folium (with conda, use `-c conda-forge`)
 
 ## What is it?
 * [`db-access`](db-access): illustration of accessing SQLite databases and using
