@@ -30,5 +30,6 @@ to create it.  There is some material not covered in the presentation as well.
 * [`pandas`](pandas): illustrations of using pandas and seaborn.
 * [`regexes`](regexes): illustrations of using regular expressions for validation
   and information extraction from textual data.
+* [1seaborn`]:(seaborn): illustrations of using Seaborn to create plots.
 * [`web-scraping`](web-scraping): illustration of web scraping using beautiful soup
   and graph representation using networkx.
