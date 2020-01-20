@@ -181,6 +181,7 @@ https://repo.anaconda.com/pkgs/main/linux-64/shapely-1.6.4-py37hc5e8c75_0.conda
 https://repo.anaconda.com/pkgs/main/linux-64/altair-3.2.0-py37_0.conda
 https://repo.anaconda.com/pkgs/main/linux-64/fiona-1.8.11-py37h41e4f33_0.conda
 https://repo.anaconda.com/pkgs/main/linux-64/patsy-0.5.1-py37_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/xarray-0.14.1-py_1.conda
 https://conda.anaconda.org/conda-forge/noarch/folium-0.10.0-py_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/geopandas-0.6.1-py_0.conda
 https://repo.anaconda.com/pkgs/main/linux-64/statsmodels-0.10.1-py37hdd07704_0.conda
