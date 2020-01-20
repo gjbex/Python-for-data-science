@@ -7,10 +7,12 @@ dependencies:
   - folium
   - geopandas
   - holoviews
+  - ipywidgets
   - jupyter
   - jupyterlab
   - matplotlib
   - networkx
+  - nodejs
   - pandas
   - python=3.7
   - scipy
