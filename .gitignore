@@ -108,3 +108,6 @@ venv.bak/
 *.swp
 *.bak
 ~$python_for_data_science.pptx
+
+# direnv file
+.envrc
