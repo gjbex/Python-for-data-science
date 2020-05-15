@@ -71,6 +71,12 @@ class ResoureManager:
     def running_jobs(self):
         return self._running
 
+    def is_free(self, node):
+        return node in self._free_nodes
+
+    def is_busy(self, node):
+        return node in self._busy_nodes
+
     def qstat(self):
         for job in self._queue:
             print(job, 'Q')
@@ -133,16 +139,21 @@ if __name__ == '__main__':
         with open(f'{options.file}_jobs.csv', 'w', newline='') as csv_jobs_file:
             csv_jobs_writer = csv.writer(csv_jobs_file)
             csv_jobs_writer.writerow(['time', 'job_id', 'node'])
-            for _append in range(options.nr_timesteps):
-                print('-'*20)
+            for _ in range(options.nr_timesteps):
+                print('-'*36)
                 print(f'---- {time} ----')
+                time_str = datetime.strftime(time, '%Y-%m-%d %H:%M:%S')
                 resource_manager.qstat()
                 for node in nodes:
-                    cpu_load = f'{100*random.random():.2f}'
-                    mem_load = f'{100*random.random():.2f}'
-                    csv_load_writer.writerow([node, time, cpu_load, mem_load])
+                    if resource_manager.is_busy(node):
+                        cpu_load = f'{50 + 50*random.random():.2f}'
+                        mem_load = f'{10 + 90*random.random():.2f}'
+                    else:
+                        cpu_load = f'{10*random.random():.2f}'
+                        mem_load = f'{10*random.random():.2f}'
+                    csv_load_writer.writerow([time_str, node, cpu_load, mem_load])
                 resource_manager.cycle(delta)
                 for job in resource_manager.running_jobs:
                     for node in job.nodes:
-                        csv_jobs_writer.writerow([time, job.job_id, node])
+                        csv_jobs_writer.writerow([time_str, job.job_id, node])
                 time += delta
