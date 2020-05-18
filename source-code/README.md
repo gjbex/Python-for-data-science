@@ -21,6 +21,7 @@ to create it.  There is some material not covered in the presentation as well.
   * jupyter
   * folium (with conda, use `-c conda-forge`)
   * xarray
+  * dash
 
 ## What is it?
 * [`db-access`](db-access): illustration of accessing SQLite databases and using
@@ -38,3 +39,4 @@ to create it.  There is some material not covered in the presentation as well.
   and graph representation using networkx.
 * [`xarray`](xarray): illustrates the xarray library for pandas-like operations
   on multi-dimensional arrays.
+* [`dash`](dash): illustration of creating a simple dashboard using dash.
