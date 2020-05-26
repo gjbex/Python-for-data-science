@@ -5,6 +5,58 @@ import csv
 from datetime import datetime, timedelta
 import random
 
+
+class Node_info:
+
+    def __init__(self, node_name):
+        self._name = node_name
+        self._cpu_load = None
+        self._mem_load = None
+        self._jobs = list()
+
+    @property
+    def name(self):
+        return self._name
+
+    def add_job_id(self, job_id):
+        self._jobs.append(job_id)
+
+    @property
+    def _job_ids(self):
+        return ','.join(self._jobs)
+
+    @property
+    def job_ids(self):
+        return self._jobs.copy()
+
+    @property
+    def state(self):
+        return 'busy' if self._jobs else 'idle'
+
+    @property
+    def cpu_load(self):
+        return self._cpu_load
+
+    @cpu_load.setter
+    def cpu_load(self, cpu_load):
+        self._cpu_load = cpu_load
+
+    @property
+    def mem_load(self):
+        return self._mem_load
+
+    @mem_load.setter
+    def mem_load(self, mem_load):
+        self._mem_load = mem_load
+
+    def __repr__(self):
+        repr = f'{self.name}\n'
+        repr += f'\tstate = {self.state}\n'
+        repr += f'\tjobs = {self._job_ids}\n'
+        repr += f'\tstatus = cpu_load={self.cpu_load};mem_load={self.mem_load}\n'
+        return repr
+
+    
 class Job:
 
     def __init__(self, job_id, nr_nodes, walltime):
@@ -142,6 +194,7 @@ if __name__ == '__main__':
             for _ in range(options.nr_timesteps):
                 print('-'*36)
                 print(f'---- {time} ----')
+                node_infos = dict()
                 time_str = datetime.strftime(time, '%Y-%m-%d %H:%M:%S')
                 resource_manager.qstat()
                 for node in nodes:
@@ -152,8 +205,18 @@ if __name__ == '__main__':
                         cpu_load = f'{10*random.random():.2f}'
                         mem_load = f'{10*random.random():.2f}'
                     csv_load_writer.writerow([time_str, node, cpu_load, mem_load])
+                    node_info = Node_info(node)
+                    node_info.cpu_load = cpu_load
+                    node_info.mem_load = mem_load
+                    node_infos[node] = node_info
                 resource_manager.cycle(delta)
                 for job in resource_manager.running_jobs:
                     for node in job.nodes:
                         csv_jobs_writer.writerow([time_str, job.job_id, node])
+                        node_infos[node].add_job_id(job.job_id)
+                timestamp = datetime.strftime(time, '%Y%m%d_%H%M%S')
+                log_file_name = f'{options.file}_log_{timestamp}.txt'
+                with open(log_file_name, 'w') as log_file:
+                    for node in sorted(node_infos.keys()):
+                        print(node_infos[node], file=log_file)
                 time += delta
