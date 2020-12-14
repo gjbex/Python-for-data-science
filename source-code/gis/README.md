@@ -15,5 +15,7 @@ Sample code for processing GIS data using fiona for I/O.
     Shapely objects and algorithms.
 1. `world_happiness.ipynb`: jupyter notebook illustrating how to create
     a chloropleth map using `Folium` and GeoJSON information.
+1, `city_center.ipynb`: GeoPoandas application to approximate the
+   center of Belgian municipalities by the centroid of their shape.
 1. `Data`: shape, GeoJSON and GeoTIFF files, as well as the World
     Happiness data for 2016.

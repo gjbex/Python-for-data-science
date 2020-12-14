@@ -1,0 +1,9 @@
+# streamlit
+
+streamlit is a framework for creating dashboards.
+
+
+## What is it?
+
+1. [`distributions.py`](distributions.py): dashboard that displays a sample from a
+   user-selected probability distribution.
