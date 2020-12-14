@@ -1,0 +1,7 @@
+name: streamlit
+channels:
+  - defaults
+dependencies:
+  - matplotlib
+  - numpy
+prefix: /home/gjb/miniconda3/envs/streamlit
