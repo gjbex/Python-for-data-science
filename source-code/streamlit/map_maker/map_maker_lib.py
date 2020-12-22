@@ -20,6 +20,7 @@ DELIMITERS = {
     'tab': '\t',
 }
 
+# see https://vega.github.io/vega/docs/schemes/#reference
 COLOR_SCHEMES = (
     # sequential single-hue schemes
     'blues',
