@@ -9,15 +9,15 @@ import random
 
 DATA_TYPES = {
     'quantitative': 'Q',
-    'ordinal': 'O',
-    'nominal': 'N',
+    'ordinal':      'O',
+    'nominal':      'N',
 }
 
 DELIMITERS = {
-    'comma': ',',
+    'comma':      ',',
     'semi-colon': ';',
-    'space': ' ',
-    'tab': '\t',
+    'space':      ' ',
+    'tab':        '\t',
 }
 
 # see https://vega.github.io/vega/docs/schemes/#reference
