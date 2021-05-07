@@ -22,4 +22,5 @@ easy to use.
 1. `patients.ipynb`: runninng example used in the Python slides.
 1. `patient_data.ipynb`: extended version of therunninng example used
     in the Python slides.
-`. `screenshots`: screenshots made for the slides.
+1. `bokeh_plot.ipynb`: using Bokeh as a plotting beackdnd for pandas.
+1. `screenshots`: screenshots made for the slides.
