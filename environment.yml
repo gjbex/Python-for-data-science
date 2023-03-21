@@ -1,5 +1,6 @@
 name: python_for_data_science
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - gdal
