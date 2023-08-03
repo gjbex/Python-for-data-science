@@ -12,7 +12,7 @@ class Node_info:
         self._name = node_name
         self._cpu_load = None
         self._mem_load = None
-        self._jobs = list()
+        self._jobs = []
 
     @property
     def name(self):
@@ -62,7 +62,7 @@ class Job:
     def __init__(self, job_id, nr_nodes, walltime):
         self._job_id = job_id
         self._nr_nodes = nr_nodes
-        self._nodes = list()
+        self._nodes = []
         self._walltime = timedelta(seconds=walltime)
         self._remaining = None
 
@@ -106,7 +106,7 @@ class ResoureManager:
     def __init__(self, nodes):
         self._free_nodes = list(nodes)
         self._busy_nodes = set()
-        self._queue = list()
+        self._queue = []
         self._running = set()
         self._completed = set()
         self._next_id = 1
@@ -194,7 +194,7 @@ if __name__ == '__main__':
             for _ in range(options.nr_timesteps):
                 print('-'*36)
                 print(f'---- {time} ----')
-                node_infos = dict()
+                node_infos = {}
                 time_str = datetime.strftime(time, '%Y-%m-%d %H:%M:%S')
                 resource_manager.qstat()
                 for node in nodes:

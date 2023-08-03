@@ -84,15 +84,16 @@ if __name__ == '__main__':
     def update(job_id):
         data = loads.merge(jobs.query(f'job_id == {job_id}'), on=['time', 'node'],
                            how='right')
-        figures = list()
+        figures = []
         for quantity in ['cpu', 'mem']:
-            nodes_data = list()
+            nodes_data = []
             for node_df in data.groupby('node'):
-                node_data = dict()
-                node_data['name'] = node_df[0]
-                node_data['x'] = node_df[1].time
-                node_data['y'] = node_df[1][f'{quantity}_load']
-                node_data['mode'] = ['markers', 'line'],
+                node_data = {
+                    'name': node_df[0],
+                    'x': node_df[1].time,
+                    'y': node_df[1][f'{quantity}_load'],
+                    'mode': (['markers', 'line'],),
+                }
                 nodes_data.append(node_data)
             figures.append({
                 'data': nodes_data,

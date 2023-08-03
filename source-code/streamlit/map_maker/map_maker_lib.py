@@ -130,7 +130,7 @@ def validate_data(data):
                         if col_name.lower() == 'niscode']
     if len(nis_code_pos) > 1:
         raise ValueError('multiple columns have NIS code name')
-    elif len(nis_code_pos) == 0:
+    elif not nis_code_pos:
         raise ValueError('NIS code column is missing')
     else:
         columns = list(data.columns)
