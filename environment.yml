@@ -1,7 +1,6 @@
 name: python_for_data_science
 channels:
   - conda-forge
-  - defaults
 dependencies:
   - gdal
   - networkx
@@ -41,4 +40,8 @@ dependencies:
   - sqlalchemy
   - plotly
   - beautifulsoup4
-prefix: /home/gjb/miniconda3/envs/python_for_data_science
+  - lxml
+  - ca-certificates
+  - certifi
+  - openssl
+prefix: /home/gjb/mambaforge/envs/python_for_data_science

@@ -1,0 +1,12 @@
+name: pandas_bokeh
+channels:
+  - conda-forge
+  - patrikhlobil
+dependencies:
+  - pandas-bokeh
+  - bokeh==2.4.3
+  - pandas
+  - jupyterlab
+  - ca-certificates
+  - openssl
+prefix: /home/gjb/mambaforge/envs/pandas_bokeh
