@@ -40,8 +40,4 @@ dependencies:
   - sqlalchemy
   - plotly
   - beautifulsoup4
-  - lxml
-  - ca-certificates
-  - certifi
-  - openssl
 prefix: /home/gjb/mambaforge/envs/python_for_data_science
