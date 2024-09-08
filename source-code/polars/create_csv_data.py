@@ -11,25 +11,17 @@ import sys
 def write_file(args):
     file_name, rows, curr_time, delta_time, curr_vals, delta_val = args
     fieldnames = ['timestamp']
-    fieldnames.extend(['C{0:d}'.format(i + 1) for i in range(len(curr_vals))])
+    fieldnames.extend([f'C{i + 1:d}' for i in range(len(curr_vals))])
     with open(file_name, 'w', newline='') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
-        values = []
-        for _ in range(rows//2):
-            data = {'C{0:d}'.format(i + 1): curr_vals[i]
-                    for i in range(len(curr_vals))}
+        for _ in range(rows):
+            data = {f'C{i + 1:d}': val for i, val in enumerate(curr_vals)}
             data['timestamp'] = curr_time
             writer.writerow(data)
-            values.append(data)
             curr_time += delta_time
             curr_vals = [x + random.uniform(-delta_val, delta_val)
                          for x in curr_vals]
-        while values:
-            data = values.pop()
-            data['timestamp'] = curr_time
-            writer.writerow(data)
-            curr_time += delta_time
     return file_name
 
             
