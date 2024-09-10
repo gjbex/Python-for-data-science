@@ -10,4 +10,8 @@ Polars is an alternative to pandas that is designed to have better performance.
    directory with the same name.
 1. `polars_versus_pandas_benchmarks.ipynb`: Jupyter notebook that compares the
    performance of polars and pandas on a variety of operations.
+1. `create_csv_data.py`: Python script to generate one or more large CSV files
+   for benchmarking.
+1. `create_csv_data.slurm`: Slurm script to run `create_csv_data.py` on a
+   cluster.
 1. `data`: Directory containing the data used in the notebook.
