@@ -24,3 +24,5 @@ easy to use.
     in the Python slides.
 1. `pipes.ipynb`: consolidating data processing using pipes.
 1. `screenshots`: screenshots made for the slides.
+1. `generate_csv_files.py`: script to generate CSV files in different
+    formats.
