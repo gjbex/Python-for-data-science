@@ -19,3 +19,6 @@ Sources:
   datasets at http://www.esrl.noaa.gov/gmd/dv/data/.
 - `greenhouse_gaz/gv_ch4/` Methane concentration
   http://www.esrl.noaa.gov/gmd/dv/data/index.php?parameter_name=Carbon%2BDioxide
+
+- `csv_files/`: a collection of CSV files in various formats to check the robustness
+  of parsers.
