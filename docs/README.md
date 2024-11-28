@@ -25,7 +25,7 @@ Total duration: 4 hours.
   | Subject                                     | Duration |
   |---------------------------------------------|----------|
   | introduction and motivation                 |  5 min.  |
-  | pandas & seaborn                            |105 min.  |
+  | pandas & seaborn or polars & seaborn        |105 min.  |
   | coffee break                                | 10 min.  |
   | text parsing with regular expressions       | 40 min.  |
   | querying relational databases               | 30 min.  |
