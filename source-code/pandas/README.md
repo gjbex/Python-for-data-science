@@ -26,3 +26,6 @@ easy to use.
 1. `screenshots`: screenshots made for the slides.
 1. `generate_csv_files.py`: script to generate CSV files in different
     formats.
+1. `copy_on_write.ipynb`: Jupyter notebook that illustrates how data is shared
+   between related notebooks and the role Copy-on-Write plays in order to
+   prevent accidental data modifications in more than one dataframe.
