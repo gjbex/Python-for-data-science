@@ -22,6 +22,8 @@ to create it.  There is some material not covered in the presentation as well.
   soup and graph representation using networkx.
 * [`xarray`](xarray): illustrates the xarray library for pandas-like operations
   on multi-dimensional arrays.
+* [`duckdb`](duckdb): illustrates the DuckDB library for SQL-like operations
+  on dataframes, including integration with pandas and polars.
 
 **Note:** material on dashboards has been moved to a [dedicated
 repository](https://github.com/gjbex/Python-dashboards).
