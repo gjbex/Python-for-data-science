@@ -25,7 +25,7 @@ Total duration: 4 hours.
   | Subject                                     | Duration |
   |---------------------------------------------|----------|
   | introduction and motivation                 |  5 min.  |
-  | pandas & seaborn                            |105 min.  |
+  | pandas & seaborn or polars & seaborn        |105 min.  |
   | coffee break                                | 10 min.  |
   | text parsing with regular expressions       | 40 min.  |
   | querying relational databases               | 30 min.  |
@@ -61,6 +61,13 @@ For following along hands-on, you need
   jobs on the HPC system if you want to use an HPC system;
 * a Python environment that can run Jupyter Lab if you want to use your own system;
 * access to Google Colaboratory if you prefer not to install software.
+
+
+## Level
+
+* Introductory: 30 %
+* Intermediate: 50 %
+* Advanced: 20 %
 
 
 ## Trainer(s)

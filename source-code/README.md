@@ -14,6 +14,7 @@ to create it.  There is some material not covered in the presentation as well.
 * [`networkx`](networkx): illustration of using the networkx library for graph
   representation and algorithms.
 * [`pandas`](pandas): illustrations of using pandas and seaborn.
+* [`polars`](polars): Kllustrations of using polars.
 * [`regexes`](regexes): illustrations of using regular expressions for
   validation and information extraction from textual data.
 * [`seaborn`](seaborn): illustrations of using Seaborn to create plots.
