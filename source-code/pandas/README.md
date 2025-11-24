@@ -32,3 +32,5 @@ easy to use.
 1. `apply.ipynb`: Jupyter notebook that illustrates the use of the `apply` method
    in pandas dataframes for applying functions along rows or columns. It includes
    a comparison of performance between using `apply` and vectorized operations.
+1. `numba_and_pandas.ipynb`: Jupyter notebook that demonstrates how to use Numba
+   to optimize performance of operations on pandas dataframes.
