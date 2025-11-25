@@ -25,7 +25,14 @@ easy to use.
 1. `pipes.ipynb`: consolidating data processing using pipes.
 1. `screenshots`: screenshots made for the slides.
 1. `generate_csv_files.py`: script to generate CSV files in different
-    formats.
+    formatg.
 1. `copy_on_write.ipynb`: Jupyter notebook that illustrates how data is shared
    between related notebooks and the role Copy-on-Write plays in order to
    prevent accidental data modifications in more than one dataframe.
+1. `apply.ipynb`: Jupyter notebook that illustrates the use of the `apply` method
+   in pandas dataframes for applying functions along rows or columns. It includes
+   a comparison of performance between using `apply` and vectorized operations.
+1. `numba_and_pandas.ipynb`: Jupyter notebook that demonstrates how to use Numba
+   to optimize performance of operations on pandas dataframes.
+1. `from_long_to_wide_and_back_again.ipynb`: Jupyter notebook that illustrates
+   how to reshape data using `stack` and `pivot` methods in pandas.
