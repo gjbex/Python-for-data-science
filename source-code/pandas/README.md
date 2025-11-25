@@ -34,3 +34,5 @@ easy to use.
    a comparison of performance between using `apply` and vectorized operations.
 1. `numba_and_pandas.ipynb`: Jupyter notebook that demonstrates how to use Numba
    to optimize performance of operations on pandas dataframes.
+1. `from_long_to_wide_and_back_again.ipynb`: Jupyter notebook that illustrates
+   how to reshape data using `stack` and `pivot` methods in pandas.
