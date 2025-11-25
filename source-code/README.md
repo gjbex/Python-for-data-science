@@ -15,6 +15,7 @@ to create it.  There is some material not covered in the presentation as well.
   representation and algorithms.
 * [`pandas`](pandas): illustrations of using pandas and seaborn.
 * [`polars`](polars): Kllustrations of using polars.
+* [`duckdb`](duckdb): illustrations of using DuckDB for SQL queries.
 * [`regexes`](regexes): illustrations of using regular expressions for
   validation and information extraction from textual data.
 * [`seaborn`](seaborn): illustrations of using Seaborn to create plots.
