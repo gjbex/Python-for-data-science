@@ -15,6 +15,7 @@ to create it.  There is some material not covered in the presentation as well.
   representation and algorithms.
 * [`pandas`](pandas): illustrations of using pandas and seaborn.
 * [`polars`](polars): Kllustrations of using polars.
+* [`duckdb`](duckdb): illustrations of using DuckDB for SQL queries.
 * [`regexes`](regexes): illustrations of using regular expressions for
   validation and information extraction from textual data.
 * [`seaborn`](seaborn): illustrations of using Seaborn to create plots.
@@ -22,6 +23,8 @@ to create it.  There is some material not covered in the presentation as well.
   soup and graph representation using networkx.
 * [`xarray`](xarray): illustrates the xarray library for pandas-like operations
   on multi-dimensional arrays.
+* [`duckdb`](duckdb): illustrates the DuckDB library for SQL-like operations
+  on dataframes, including integration with pandas and polars.
 
 **Note:** material on dashboards has been moved to a [dedicated
 repository](https://github.com/gjbex/Python-dashboards).
