@@ -39,3 +39,13 @@ use.
    Numba to optimize performance of operations on pandas dataframes.
 1. `from_long_to_wide_and_back_again.ipynb`: Jupyter notebook that illustrates
    how to reshape data using `stack` and `pivot` methods in pandas.
+
+
+## Exercises
+
+Some exercises to practice your skills:
+
+1. `EXERCISES.md`: list of exercises.
+1. `EXERCISES_INSTRUCTOR.md`: some hints and sketch of solutions.
+1. `EXERCISES_SOLUTIONS.ipynb`: Jupyter notebook with solutions to the
+   exercises.
