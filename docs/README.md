@@ -54,6 +54,43 @@ from scratch.  Familiarity with numpy is not required, but would be beneficial.
 If you plan to do Python programming in a Linux or HPC environment you should
 be familiar with these as well.
 
+More concretely, participants should already be comfortable with the following:
+
+* running Python code in Jupyter or from the command line;
+* variables, numbers, strings, booleans, and basic containers such as lists,
+  tuples, sets, and dictionaries;
+* `if`/`else` statements and `for` loops;
+* writing and calling simple functions with arguments and a return value;
+* indexing and slicing sequences;
+* importing modules and calling functions from them;
+* reading and making small changes to short Python scripts;
+* basic string handling and simple file-oriented workflows such as reading or
+  writing CSV-like data.
+
+You do not need prior experience with pandas, polars, seaborn, HoloViews,
+regular expressions, SQLAlchemy, Beautiful Soup, GeoPandas, DuckDB, or xarray.
+Those are part of the training itself.
+
+### Quick self-assessment
+
+If you can do most of the tasks below without looking up basic Python syntax,
+you are likely ready for this training.
+
+* write a function that returns all negative numbers from a list;
+* loop over rows in a small CSV file and count how often a value occurs;
+* use `if`/`else` to classify a measurement as low, normal, or high;
+* extract a slice from a list or string and explain what it contains;
+* import a module such as `csv`, `math`, or `pathlib` and call one of its
+  functions;
+* build a dictionary that maps names to values and retrieve one by key;
+* read a short script that uses a function, a loop, and a few imports without
+  needing every line explained;
+* make a small change to an example notebook or script and run it again.
+
+If several of these items still feel difficult, the training will probably move
+too fast. In that case, it is better to first take a short introductory Python
+course or refresh the basics.
+
 For following along hands-on, you need
 * laptop or desktop with internet access.
 * a system set up so you can connect to an HPC system, an account on an HPC
@@ -63,11 +100,15 @@ For following along hands-on, you need
 * access to Google Colaboratory if you prefer not to install software.
 
 
-## Level
+## Level of the Material
+
+For participants who already have basic Python programming experience, the material in this training is approximately
 
 * Introductory: 30 %
 * Intermediate: 50 %
 * Advanced: 20 %
+
+These percentages describe the level of the data science topics covered in the training, not the required entry level in Python itself.
 
 
 ## Trainer(s)
