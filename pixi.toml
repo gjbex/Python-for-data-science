@@ -1,0 +1,143 @@
+[workspace]
+name = "python-for-data-science"
+version = "0.1.0"
+description = "Environments for the Python for data science training material"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+# Dependencies shared by every current topic environment.  Python 3.12 matches
+# the environment from which the checked-in explicit Conda specification was
+# generated.
+[dependencies]
+python = "3.12.*"
+ipykernel = "*"
+ipywidgets = "*"
+jupyterlab = "*"
+nbconvert = "*"
+pandoc = "*"
+
+[tasks]
+lab = { cmd = "jupyter lab", cwd = "source-code" }
+
+# Each feature is self-contained for the corresponding source-code directory.
+# A topic environment therefore installs only the libraries needed for that
+# material, in addition to the shared notebook dependencies above.
+[feature.altair.dependencies]
+altair = "*"
+numpy = "*"
+pandas = "*"
+
+[feature.db-access.dependencies]
+sqlalchemy = "*"
+
+[feature.duckdb.dependencies]
+duckdb = "*"
+pandas = "*"
+
+[feature.gis.dependencies]
+fiona = "*"
+folium = "*"
+gdal = "*"
+geojson = "*"
+geopandas = "*"
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+shapely = "*"
+
+[feature.holoviews.dependencies]
+holoviews = "*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+
+[feature.networkx.dependencies]
+matplotlib = "*"
+networkx = "*"
+
+[feature.pandas.dependencies]
+lxml = "*"
+matplotlib = "*"
+numba = "*"
+numpy = "*"
+openpyxl = "*"
+pandas = "*"
+scipy = "*"
+seaborn = "*"
+
+[feature.polars.dependencies]
+fastexcel = "*"
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+polars = "*"
+seaborn = "*"
+
+[feature.seaborn.dependencies]
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+seaborn = "*"
+
+[feature.web-scraping.dependencies]
+beautifulsoup4 = "*"
+matplotlib = "*"
+networkx = "*"
+
+[feature.xarray.dependencies]
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+xarray = "*"
+
+# pandas-bokeh is a legacy, nested example that requires Bokeh 2 and NumPy 1.
+# It is deliberately independent of the current shared/default environment so
+# those constraints cannot downgrade the other visualization topics.
+[feature.pandas-bokeh.dependencies]
+python = "3.10.*"
+ipykernel = "*"
+jupyterlab = "*"
+numpy = "<2"
+pandas = "<2"
+bokeh = "==2.4.3"
+
+[feature.pandas-bokeh.pypi-dependencies]
+pandas-bokeh = "==0.5.5"
+
+[feature.pandas-bokeh.tasks]
+lab = { cmd = "jupyter lab", cwd = "source-code/pandas/bokeh" }
+
+[environments]
+# `pixi install` and `pixi run lab` use the complete current training stack.
+default = { features = [
+    "altair",
+    "db-access",
+    "duckdb",
+    "gis",
+    "holoviews",
+    "networkx",
+    "pandas",
+    "polars",
+    "seaborn",
+    "web-scraping",
+    "xarray",
+] }
+
+# Topic-specific environments mirror the directories under source-code.
+altair = ["altair"]
+db-access = ["db-access"]
+duckdb = ["duckdb"]
+gis = ["gis"]
+holoviews = ["holoviews"]
+networkx = ["networkx"]
+pandas = ["pandas"]
+polars = ["polars"]
+regexes = []
+seaborn = ["seaborn"]
+web-scraping = ["web-scraping"]
+xarray = ["xarray"]
+
+# This environment intentionally excludes the default feature (and therefore
+# its Python 3.12 constraint); it is only for the historical Bokeh notebook.
+pandas-bokeh = { features = ["pandas-bokeh"], no-default-feature = true }
