@@ -37,8 +37,10 @@ use.
    operations.
 1. `numba_and_pandas.ipynb`: Jupyter notebook that demonstrates how to use
    Numba to optimize performance of operations on pandas dataframes.
-1. `from_long_to_wide_and_back_again.ipynb`: Jupyter notebook that illustrates
-   how to reshape data using `stack` and `pivot` methods in pandas.
+1. `wide_vs_long_data_format.ipynb`: Jupyter notebook that illustrates how to
+   reshape data between wide and long formats using `melt()` and `pivot()`. An
+   optional section covers multiple value columns, hierarchical columns, and
+   the risk of adding missing combinations during a round trip.
 
 
 ## Exercises
