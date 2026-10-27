@@ -132,7 +132,6 @@ gis = ["gis"]
 holoviews = ["holoviews"]
 networkx = ["networkx"]
 pandas = ["pandas"]
-polars = ["polars"]
 regexes = []
 seaborn = ["seaborn"]
 web-scraping = ["web-scraping"]
@@ -141,3 +140,9 @@ xarray = ["xarray"]
 # This environment intentionally excludes the default feature (and therefore
 # its Python 3.12 constraint); it is only for the historical Bokeh notebook.
 pandas-bokeh = { features = ["pandas-bokeh"], no-default-feature = true }
+
+[environments.polars]
+features = ["polars"]
+
+[environments.polars.dependencies]
+pyarrow = ">=25.0.0,<26"
