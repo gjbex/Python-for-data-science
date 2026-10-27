@@ -21,6 +21,8 @@ Polars is an alternative to pandas that is designed to have better performance.
    performance of polars in eager and lazy execution modes.
 1. `polars_query_plan.py`: Python script that demonstrates how to view the
    query plan of a polars lazy frame.
+1. `polars_datatypes.ipynb`: Jupyter notebook illustrating the use of schema
+   information when reading data.
 
 
 ## Exercises
