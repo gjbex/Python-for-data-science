@@ -1,6 +1,7 @@
 # data sets too large to store in repository
 large_data*.csv
 very_large_data*.csv
+benchmark.parquet
 
 # Slurm job output files
 slurm-*.out

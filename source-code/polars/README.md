@@ -17,6 +17,8 @@ Polars is an alternative to pandas that is designed to have better performance.
 1. `polars_performance.ipynb`: Jupyter notebook that compares the performance
    of polars and pandas on a variety of operations.
 1. `data`: Directory containing the data used in the notebook.
+1. `polars_execution_modes_benchmark.py`: Python script that compares the
+   performance of polars in eager and lazy execution modes.
 
 
 ## Exercises
