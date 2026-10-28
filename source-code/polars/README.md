@@ -23,6 +23,8 @@ Polars is an alternative to pandas that is designed to have better performance.
    query plan of a polars lazy frame.
 1. `polars_datatypes.ipynb`: Jupyter notebook illustrating the use of schema
    information when reading data.
+1. `polars_missing_values.ipynb`: Jupyter notebook illustrating how polars
+   handles missing values.
 
 
 ## Exercises
