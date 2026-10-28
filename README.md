@@ -13,6 +13,8 @@ For information on the training, see the website
    illustrate concepts.
 1. [`environment.yml`](environment.yml): conda environment file intended to be
    cross-platform.
+1. [`SETUP.md`](SETUP.md): Linux instructions for installing Pixi, creating a
+   training environment, and running the Jupyter notebooks.
 1. [`python_for_data_science_linux64_conda_specs.txt`](python_for_data_science_linux64_conda_specs.txt):
    conda environment specification file specific for 64-bit Linux to precisely
    reproduce the environment on which the code was developed.

@@ -3,8 +3,6 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<script type="text/javascript" src="./Obtaining Tide Gauge Data_files/analytics.js"></script>
-<script type="text/javascript">archive_analytics.values.server_name="wwwb-app16.us.archive.org";archive_analytics.values.server_ms=167;</script>
 <link type="text/css" rel="stylesheet" href="./Obtaining Tide Gauge Data_files/banner-styles.css">
 
 
@@ -18,8 +16,6 @@ Obtaining Tide Gauge Data</title>
 <link rel="stylesheet" href="./Obtaining Tide Gauge Data_files/style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="./Obtaining Tide Gauge Data_files/print.css" type="text/css" media="print">
 
-<script type="text/javascript" src="./Obtaining Tide Gauge Data_files/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="./Obtaining Tide Gauge Data_files/jquery.tablesorter.min.js"></script>
 <link media="screen" type="text/css" href="./Obtaining Tide Gauge Data_files/style(1).css" rel="stylesheet">
 
 </head>
@@ -109,9 +105,6 @@ Obtaining Tide Gauge Data</title>
 
 
 <!-- BEGIN WAYBACK TOOLBAR INSERT -->
-<script type="text/javascript" src="./Obtaining Tide Gauge Data_files/disclaim-element.js"></script>
-<script type="text/javascript" src="./Obtaining Tide Gauge Data_files/graph-calc.js"></script>
-<script type="text/javascript" src="./Obtaining Tide Gauge Data_files/jquery.min.js"></script>
 <script type="text/javascript">//<![CDATA[
 var __wm = (function(){
 var wbPrefix = "/web/";
@@ -142,9 +135,16 @@ function showTrackers(val) {
   trackerVal = val;
 }
 function getElementX2(obj) {
-  var $e=jQuery(obj);
-  return (typeof $e=="undefined"||typeof $e.offset=="undefined")?
-    getElementX(obj):Math.round($e.offset().left);
+  return Math.round(obj.getBoundingClientRect().left + window.pageXOffset);
+}
+function getEventX(event) {
+  return event.pageX;
+}
+function zeroPad(value, width) {
+  var text=String(value);
+  width=width||4;
+  while(text.length<width) text="0"+text;
+  return text;
 }
 function trackMouseMove(event,element) {
   var eventX = getEventX(event);
@@ -195,9 +195,6 @@ function bootstrap() {
   }
   $spk.appendChild(yearTracker);
   $spk.appendChild(monthTracker);
-
-  var $ipp=$("wm-ipp");
-  $ipp&&disclaimElement($ipp);
 }
 return{st:showTrackers,mv:trackMouseMove,h:hideToolbar,bt:bootstrap};
 })();//]]>
@@ -1748,7 +1745,6 @@ to the current database system (ca. 1987).
 <tr><td>LAMESHUR BAY</td><td><p><a href="https://web.archive.org/web/20150403182322/http://www.psmsl.org/data/obtaining/stations/2119.php"> 2119</a></p></td><td><p> 18.317</p></td><td><p> -64.723</p></td><td> </td><td><abbr title="VIRGIN ISLANDS, U.S.">VIR</abbr></td><td>12/02/2014</td><td> 939</td><td> 021</td></tr>
 <tr><td>ADEN</td><td><p><a href="https://web.archive.org/web/20150403182322/http://www.psmsl.org/data/obtaining/stations/44.php">   44</a></p></td><td><p> 12.788</p></td><td><p>  44.974</p></td><td><p>      3</p></td><td><abbr title="YEMEN">YEM</abbr></td><td>01/07/2014</td><td> 485</td><td> 001</td></tr>
 </tbody></table><p></p>
-<script type="text/javascript">$(document).ready(function(){$("#stationTable").tablesorter( {sortList: [[7,0], [8,0]]} );});</script>
 <div id="Footer">
 <p>
 <a href="https://web.archive.org/web/20150403182322/http://ioc-unesco.org/" target="_blank"><img src="./Obtaining Tide Gauge Data_files/ioc_en_small_color.gif" alt="IOC Logo"></a> 

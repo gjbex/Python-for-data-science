@@ -1,0 +1,11 @@
+int_data,float_data,category_data,string_data
+3,3.7,A,str1
+5,5.3,A,str1_str1
+7,7.5,B,str2_str1
+17,3.5,A,str1_str2
+13,5.7,A,str2
+23,7.1,B,str2_str2
+,5.5,A,str3
+29,,B,str3_str1
+31,3.3,,str2_str3
+37,7.7,B,

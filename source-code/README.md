@@ -23,6 +23,10 @@ to create it.  There is some material not covered in the presentation as well.
   soup and graph representation using networkx.
 * [`xarray`](xarray): illustrates the xarray library for pandas-like operations
   on multi-dimensional arrays.
+1. [pandas vs. polars vs. sQL cheatsheet`](PANDAS_POLARS_SQL_CHEATSHEET.md): A
+   cheatsheet comparing the syntax of Pandas, Polars, and SQL for common data
+   manipulation tasks. This can be a helpful reference when working with
+   different data processing libraries.
 
 **Note:** material on dashboards has been moved to a [dedicated
 repository](https://github.com/gjbex/Python-dashboards).
