@@ -11,6 +11,8 @@ Polars is an alternative to pandas that is designed to have better performance.
 1. `create_csv_data.py`: Python script to generate one or more large CSV files
    for benchmarking. (Note: this is a simple utility script that is not intended
    to be robust or production-ready.)
+1. `create_parquet_data.py`: Python script to generate reproducible Parquet
+   files in bounded-size row groups for benchmarking file-backed workflows.
 1. `create_csv_data.slurm`: Slurm script to run `create_csv_data.py` on a
    cluster.  (Note: don't generate excessively large files on a shared cluster,
    or more than 4 files in parallel, as this may impact other users.)
