@@ -17,7 +17,7 @@ Expected solution: A small frame constructed from a dictionary and extended with
 ## 3. Inspect Patient Metadata
 Difficulty: `Easy`  
 Time: 15 min  
-Task: Load [`data/patient_metadata.xlsx`](/home/gjb/Projects/Python-for-data-science/source-code/polars/data/patient_metadata.xlsx), then show its shape, schema, and first rows.  
+Task: Load [`data/patient_metadata.xlsx`](data/patient_metadata.xlsx), then show its shape, schema, and first rows.  
 Expected solution: Correct use of `pl.read_excel()`, `.shape`, `.schema`, and `.head()`.
 
 ## 4. Filter Rows with Expressions
@@ -113,7 +113,7 @@ Expected solution: A compact Polars pipeline with no intermediate mutation requi
 ## 19. Read Generated CSV Data
 Difficulty: `Medium`  
 Time: 20 min  
-Task: Use [`create_csv_data.py`](/home/gjb/Projects/Python-for-data-science/source-code/polars/create_csv_data.py) to generate a CSV file, then load it with Polars and inspect the schema.  
+Task: Use [`create_csv_data.py`](create_csv_data.py) to generate a CSV file, then load it with Polars and inspect the schema.  
 Expected solution: Correct use of the generator script and `pl.read_csv()`.
 
 ## 20. Mini Analysis

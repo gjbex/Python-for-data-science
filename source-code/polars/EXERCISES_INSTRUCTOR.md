@@ -1,6 +1,8 @@
 # Polars Exercises: Instructor Notes
 
-This companion file provides brief model solutions and teaching notes for [`EXERCISES.md`](/home/gjb/Projects/Python-for-data-science/source-code/polars/EXERCISES.md). The sequence intentionally mirrors the pandas set so learners can compare the APIs directly.
+This companion file provides brief model solutions and teaching notes for
+[`EXERCISES.md`](EXERCISES.md). The sequence intentionally mirrors the pandas
+set so learners can compare the APIs directly.
 
 ## 1. Create a Series
 Goal: basic `pl.Series` construction and summaries.  
