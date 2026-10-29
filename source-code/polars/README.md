@@ -9,9 +9,11 @@ Polars is an alternative to pandas that is designed to have better performance.
    between pandas and polars.  It replicates the notebook in the `pandas`
    directory with the same name.
 1. `create_csv_data.py`: Python script to generate one or more large CSV files
-   for benchmarking.
+   for benchmarking. (Note: this is a simple utility script that is not intended
+   to be robust or production-ready.)
 1. `create_csv_data.slurm`: Slurm script to run `create_csv_data.py` on a
-   cluster.
+   cluster.  (Note: don't generate excessively large files on a shared cluster,
+   or more than 4 files in parallel, as this may impact other users.)
 1. `polars_performance.ipynb`: reproducible performance investigation comparing
    equivalent pandas and Polars transformations, CSV input, and Polars eager,
    lazy, and streaming execution on file-backed data.
