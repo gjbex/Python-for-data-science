@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from argparse import ArgumentParser
+from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from concurrent.futures import ProcessPoolExecutor
 import csv
 from datetime import datetime, timedelta
@@ -8,7 +8,16 @@ import random
 import sys
 
 
-def write_file(args):
+def parse_datetime(value: str) -> datetime:
+    try:
+        return datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+    except ValueError as exc:
+        raise ArgumentTypeError(
+            "expected YYYY-MM-DD HH:MM:SS"
+        ) from exc
+
+
+def write_file(args) -> str:
     file_name, rows, curr_time, delta_time, curr_vals, delta_val, seed = args
     random.seed(seed)
     fieldnames = ["timestamp"]
@@ -25,7 +34,7 @@ def write_file(args):
     return file_name
 
 
-def get_options():
+def get_options() -> Namespace:
     arg_parser = ArgumentParser(description="create a set of CSV files")
     arg_parser.add_argument(
         "--files", type=int, default=1, help="number of files to create"
@@ -42,10 +51,10 @@ def get_options():
     )
     arg_parser.add_argument("--seed", type=int, default=1234, help="random seed to use")
     arg_parser.add_argument(
-        "--curr_time",
-        type=str,
-        default=None,
-        help="current time to use (YYYY-MM-DD HH:MM:SS)",
+        "--start_time",
+        type=parse_datetime,
+        default="2024-01-01 00:00:00",
+        help="start time to use (YYYY-MM-DD HH:MM:SS)",
     )
     options = arg_parser.parse_args()
     if options.files < 1:
@@ -57,24 +66,13 @@ def get_options():
     if options.rows < 1:
         print("Error: number of rows must be at least 1", file=sys.stderr)
         sys.exit(1)
-    if options.curr_time is not None:
-        try:
-            options.curr_time = datetime.strptime(
-                options.curr_time,
-                "%Y-%m-%d %H:%M:%S",
-            )
-        except ValueError:
-            print(
-                "Error: current time must be in the format YYYY-MM-DD HH:MM:SS",
-                file=sys.stderr,
-            )
-            sys.exit(1)
-    else:
-        options.curr_time = datetime.now()
+    if options.workers is not None and options.workers < 1:
+        print("Error: number of workers must be at least 1", file=sys.stderr)
+        sys.exit(1)
     return options
 
 
-def main():
+def main() -> None:
     options = get_options()
     random.seed(options.seed)
     seeds = [random.randint(0, 2**32 - 1) for _ in range(options.files)]
@@ -86,7 +84,7 @@ def main():
             (
                 f"{options.base_name}_{i + 1:04d}.csv",
                 options.rows,
-                options.curr_time + i * options.rows * delta_time,
+                options.start_time + i * options.rows * delta_time,
                 delta_time,
                 curr_vals,
                 delta_val,
