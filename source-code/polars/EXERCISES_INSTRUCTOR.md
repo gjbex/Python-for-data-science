@@ -96,7 +96,7 @@ Watch for: falling back to many intermediate variables when one readable chain w
 
 ## 19. Read Generated CSV Data
 Goal: connect the benchmark script to Polars I/O.  
-Model: run `python create_csv_data.py sample --files 1 --cols 3 --rows 100`, then `pl.read_csv("sample_0001.csv", try_parse_dates=True)`.  
+Model: run `python create_csv_data.py data --files 1 --cols 3 --rows 100`, then `pl.read_csv("data_0001.csv", try_parse_dates=True)`.  
 Watch for: reading the file from the wrong directory.
 
 ## 20. Mini Analysis
