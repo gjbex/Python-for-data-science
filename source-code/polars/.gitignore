@@ -4,6 +4,7 @@ very_large_data*.csv
 benchmark.parquet
 polars_performance_data.csv
 polars_performance_data.parquet
+data_0001.csv
 
 # Slurm job output files
 slurm-*.out
