@@ -9,7 +9,8 @@ import sys
 
 
 def write_file(args):
-    file_name, rows, curr_time, delta_time, curr_vals, delta_val = args
+    file_name, rows, curr_time, delta_time, curr_vals, delta_val, seed = args
+    random.seed(seed)
     fieldnames = ["timestamp"]
     fieldnames.extend([f"C{i + 1:d}" for i in range(len(curr_vals))])
     with open(file_name, "w", newline="", buffering=1_024 * 1_024) as csv_file:
@@ -58,7 +59,7 @@ def get_options():
         sys.exit(1)
     if options.curr_time is not None:
         try:
-            options.cuur_time = datetime.strptime(
+            options.curr_time = datetime.strptime(
                 options.curr_time,
                 "%Y-%m-%d %H:%M:%S",
             )
@@ -68,12 +69,15 @@ def get_options():
                 file=sys.stderr,
             )
             sys.exit(1)
+    else:
+        options.curr_time = datetime.now()
     return options
 
 
 def main():
     options = get_options()
     random.seed(options.seed)
+    seeds = [random.randint(0, 2**32 - 1) for _ in range(options.files)]
     delta_time = timedelta(seconds=1)
     curr_vals = [1.0] * options.cols
     delta_val = 0.01
@@ -86,6 +90,7 @@ def main():
                 delta_time,
                 curr_vals,
                 delta_val,
+                seeds[i],
             )
             for i in range(options.files)
         ]
