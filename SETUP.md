@@ -70,6 +70,7 @@ The available topic environments are:
 - `gis`
 - `holoviews`
 - `networkx`
+- `oscillator`
 - `pandas`
 - `polars`
 - `regexes`

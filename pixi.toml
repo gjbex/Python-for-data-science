@@ -55,6 +55,18 @@ scipy = "*"
 matplotlib = "*"
 networkx = "*"
 
+[feature.oscillator.dependencies]
+duckdb = "*"
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+polars = "*"
+pyarrow = ">=25.0.0,<26"
+scipy = "*"
+
+[feature.oscillator.tasks]
+generate-oscillator-data = { cmd = "python generate_dataset.py", cwd = "source-code/oscillator" }
+
 [feature.pandas.dependencies]
 lxml = "*"
 matplotlib = "*"
@@ -117,6 +129,7 @@ default = { features = [
     "gis",
     "holoviews",
     "networkx",
+    "oscillator",
     "pandas",
     "polars",
     "seaborn",
@@ -131,6 +144,7 @@ duckdb = ["duckdb"]
 gis = ["gis"]
 holoviews = ["holoviews"]
 networkx = ["networkx"]
+oscillator = ["oscillator"]
 pandas = ["pandas"]
 regexes = []
 seaborn = ["seaborn"]

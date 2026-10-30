@@ -13,6 +13,8 @@ to create it.  There is some material not covered in the presentation as well.
   visualizations.
 * [`networkx`](networkx): illustration of using the networkx library for graph
   representation and algorithms.
+* [`oscillator`](oscillator): generated ensemble of driven, damped oscillator
+  simulations for analytical queries with DuckDB and dataframe libraries.
 * [`pandas`](pandas): illustrations of using pandas and seaborn.
 * [`polars`](polars): Kllustrations of using polars.
 * [`duckdb`](duckdb): illustrations of using DuckDB for SQL queries.
