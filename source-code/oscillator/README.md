@@ -6,6 +6,10 @@ in batches, and the resulting observations are spread across several Parquet
 files. The dataset is intended to illustrate why an analytical query engine is
 useful for scientific output that would otherwise be analysed file by file.
 
+The technology-agnostic [participant scenario](SCENARIO.md) guides the analysis
+through research questions about resonance, transient decay, and the evidence
+needed to claim that a response has reached steady state.
+
 The model is
 
 $$
@@ -50,9 +54,9 @@ The generated `data/` directory is intentionally ignored by Git. It contains:
   status, tolerances, and evaluation counts;
 - `runs.parquet`: one row per simulation, containing its physical parameters
   and solver-batch identifier;
-- `observations/`: Parquet files such as `batch_0000/part_000.parquet`,
-  containing phase, physical time, displacement, velocity, and specific
-  energy;
+- `observations/`: Hive-partitioned Parquet files such as
+  `damping_ratio=0.01/part_0000.parquet`, containing phase, physical time,
+  displacement, velocity, and specific energy;
 - `manifest.json`: model definitions, generation parameters, schemas, row
   counts, file sizes, and SHA-256 checksums.
 
@@ -78,6 +82,28 @@ few rows per run. That smaller result can then be moved to pandas or Polars for
 visualization. Solver diagnostics remain batch-level metadata and should not be
 misinterpreted as per-run performance measurements.
 
-The partition directories deliberately use plain names rather than Hive-style
-`key=value` names. Batch identifiers are authoritative columns in
-`solver_batches.parquet` and `runs.parquet`.
+## Why Hive partitioning is used
+
+Observation files use the Hive-style directory convention
+`damping_ratio=<value>`. Analytical engines can infer `damping_ratio` as a
+column from the path and, when a query filters on it, skip unrelated
+partitions without opening their Parquet files. The directory tree is also
+self-describing and new files can be added to an existing damping partition
+without rewriting a single monolithic file.
+
+The damping ratio is a suitable partition key because the default dataset has
+only six values and the intended investigation frequently compares or filters
+them. Partitioning by `frequency_ratio` would instead create hundreds of small
+directories and files, increasing metadata and filesystem overhead. Solver
+`batch_id` is an implementation detail rather than a useful scientific
+partition key, so it remains in `runs.parquet` and `solver_batches.parquet`.
+
+Hive layout has costs. Paths containing `=` may need quoting in shell commands,
+the directory value becomes part of the dataset's schema, and reading one
+Parquet file directly does not recover the partition column. Directory-only
+schema discovery commonly exposes Hive values as strings, so the canonical
+decimal `damping_ratio` path value may need conversion before numerical use.
+Read the `observations/` directory as a Hive-partitioned dataset when the
+partition value is required, and join observations to the authoritative
+floating-point run metadata using `run_id`. The generator records the
+partition convention and encoding in `manifest.json`.

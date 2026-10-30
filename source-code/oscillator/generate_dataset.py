@@ -20,9 +20,11 @@ import pyarrow.parquet as pq
 import scipy
 from scipy.integrate import solve_ivp
 
-DATASET_ID: Final = "oscillator-ensemble-v2"
-REPLACEABLE_DATASET_IDS: Final = frozenset({"oscillator-ensemble-v1", DATASET_ID})
-GENERATOR_VERSION: Final = "2.0"
+DATASET_ID: Final = "oscillator-ensemble-v3"
+REPLACEABLE_DATASET_IDS: Final = frozenset(
+    {"oscillator-ensemble-v1", "oscillator-ensemble-v2", DATASET_ID}
+)
+GENERATOR_VERSION: Final = "3.0"
 SOLVERS: Final = ("DOP853", "RK45")
 DEFAULT_DAMPING_RATIOS: Final = (0.01, 0.03, 0.05, 0.10, 0.20, 0.40)
 
@@ -357,6 +359,60 @@ def write_parquet(table: pa.Table, path: Path) -> None:
     )
 
 
+def format_hive_partition_value(value: float) -> str:
+    """Return a stable, round-trippable decimal value for a Hive path."""
+    normalized = 0.0 if value == 0.0 else float(value)
+    return repr(normalized)
+
+
+def write_observation_partitions(
+    observations: pa.Table,
+    *,
+    damping_ratios: np.ndarray,
+    samples_per_run: int,
+    batch_id: int,
+    output_dir: Path,
+) -> list[tuple[Path, int]]:
+    """Write one batch into Hive partitions grouped by damping ratio."""
+    expected_rows = damping_ratios.size * samples_per_run
+    if observations.num_rows != expected_rows:
+        raise RuntimeError(
+            "cannot partition observation batch: "
+            f"found {observations.num_rows} rows, expected {expected_rows}"
+        )
+
+    written: list[tuple[Path, int]] = []
+    seen_partition_values: set[str] = set()
+    group_start = 0
+    while group_start < damping_ratios.size:
+        group_stop = group_start + 1
+        while (
+            group_stop < damping_ratios.size
+            and damping_ratios[group_stop] == damping_ratios[group_start]
+        ):
+            group_stop += 1
+
+        row_start = group_start * samples_per_run
+        row_count = (group_stop - group_start) * samples_per_run
+        partition_value = format_hive_partition_value(damping_ratios[group_start])
+        if partition_value in seen_partition_values:
+            raise RuntimeError(
+                "damping ratios must be contiguous within an observation batch"
+            )
+        seen_partition_values.add(partition_value)
+        part_path = (
+            output_dir
+            / "observations"
+            / f"damping_ratio={partition_value}"
+            / f"part_{batch_id:04d}.parquet"
+        )
+        write_parquet(observations.slice(row_start, row_count), part_path)
+        written.append((part_path, row_count))
+        group_start = group_stop
+
+    return written
+
+
 def sha256(path: Path) -> str:
     """Return the SHA-256 checksum of a file."""
     digest = hashlib.sha256()
@@ -446,6 +502,7 @@ def generate_dataset(args: argparse.Namespace, output_dir: Path) -> dict[str, ob
     batch_tables: list[pa.Table] = []
     run_tables: list[pa.Table] = []
     observation_count = 0
+    observation_file_count = 0
     total_runs = all_damping_ratios.size
     for batch_id, start in enumerate(range(0, total_runs, args.batch_size)):
         stop = min(start + args.batch_size, total_runs)
@@ -466,14 +523,16 @@ def generate_dataset(args: argparse.Namespace, output_dir: Path) -> dict[str, ob
         batch_tables.append(batch)
         run_tables.append(runs)
         observation_count += observations.num_rows
-        part_path = (
-            output_dir / "observations" / f"batch_{batch_id:04d}" / "part_000.parquet"
+        written_parts = write_observation_partitions(
+            observations,
+            damping_ratios=all_damping_ratios[start:stop],
+            samples_per_run=phases.size,
+            batch_id=batch_id,
+            output_dir=output_dir,
         )
-        write_parquet(observations, part_path)
-        print(
-            f"wrote {part_path.relative_to(output_dir)} "
-            f"({observations.num_rows:,} rows)"
-        )
+        observation_file_count += len(written_parts)
+        for part_path, row_count in written_parts:
+            print(f"wrote {part_path.relative_to(output_dir)} " f"({row_count:,} rows)")
 
     all_batches = pa.concat_tables(batch_tables)
     all_runs = pa.concat_tables(run_tables)
@@ -505,6 +564,14 @@ def generate_dataset(args: argparse.Namespace, output_dir: Path) -> dict[str, ob
             "observation-count validation failed: "
             f"metadata reports {parquet_observation_count:,}, "
             f"expected {observation_count:,}"
+        )
+    observation_partition_count = sum(
+        path.is_dir() for path in (output_dir / "observations").glob("damping_ratio=*")
+    )
+    if observation_partition_count != damping_ratios.size:
+        raise RuntimeError(
+            "observation-partition validation failed: "
+            f"found {observation_partition_count}, expected {damping_ratios.size}"
         )
 
     completed_runs = int(
@@ -547,12 +614,31 @@ def generate_dataset(args: argparse.Namespace, output_dir: Path) -> dict[str, ob
             "absolute_tolerance": args.absolute_tolerance,
             "batch_size": args.batch_size,
         },
+        "layout": {
+            "observations": {
+                "format": "parquet",
+                "partitioning": "hive",
+                "partition_columns": [
+                    {
+                        "name": "damping_ratio",
+                        "type": "string",
+                        "semantic_type": "double",
+                        "encoding": "shortest round-trippable decimal",
+                        "source": "directory",
+                    }
+                ],
+                "path_pattern": (
+                    "observations/damping_ratio=<value>/part_<batch_id>.parquet"
+                ),
+            }
+        },
         "summary": {
             "solver_batches": all_batches.num_rows,
             "runs": all_runs.num_rows,
             "completed_runs": completed_runs,
             "observations": observation_count,
-            "observation_partitions": all_batches.num_rows,
+            "observation_partitions": observation_partition_count,
+            "observation_files": observation_file_count,
         },
         "schemas": {
             "solver_batches": schema_description(all_batches.schema),
