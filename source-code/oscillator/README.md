@@ -10,6 +10,11 @@ The technology-agnostic [participant scenario](SCENARIO.md) guides the analysis
 through research questions about resonance, transient decay, and the evidence
 needed to claim that a response has reached steady state.
 
+The [conceptual reference solution](SOLUTION.md) summarizes the expected
+scientific findings, assumptions, and unresolved cases without duplicating the
+notebook implementations. It is intended to be read after attempting the
+participant scenario.
+
 The model is
 
 $$
@@ -67,6 +72,24 @@ cannot silently remove an unrelated data directory.
 Relative values passed to `--output-dir` are resolved from this `oscillator`
 directory, irrespective of the shell's current working directory. Use an
 absolute path when generating a temporary dataset elsewhere.
+
+## Analysis notebooks
+
+- [`duckdb_analysis.ipynb`](duckdb_analysis.ipynb) registers the Parquet files
+  as DuckDB views, validates the ingestion contract with SQL queries, and
+  provides model solutions for all five research questions.
+- [`polars_analysis.ipynb`](polars_analysis.ipynb) defines lazy Polars scans and
+  performs the equivalent ingestion and analysis with expressions.
+
+Both notebooks present three alternative amplitude estimators for the first
+research question, a windowed harmonic analysis for the second, and a
+settling-aware resonance analysis for the third. The fourth solution compares
+the estimates with the steady-state theory across frequency, damping, settling
+class, and analysis window. The settling thresholds in the model solution are
+deliberately provisional; the fifth solution tests their sensitivity and
+compares the alternative amplitude estimators. The research-guided
+investigation in [`SCENARIO.md`](SCENARIO.md) asks participants to decide which
+conclusions survive those analytical choices.
 
 ## Intended investigation
 
