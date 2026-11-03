@@ -96,13 +96,6 @@ beautifulsoup4 = "*"
 matplotlib = "*"
 networkx = "*"
 
-[feature.xarray.dependencies]
-matplotlib = "*"
-numpy = "*"
-pandas = "*"
-scipy = "*"
-xarray = "*"
-
 # pandas-bokeh is a legacy, nested example that requires Bokeh 2 and NumPy 1.
 # It is deliberately independent of the current shared/default environment so
 # those constraints cannot downgrade the other visualization topics.
@@ -134,7 +127,6 @@ default = { features = [
     "polars",
     "seaborn",
     "web-scraping",
-    "xarray",
 ] }
 
 # Topic-specific environments mirror the directories under source-code.
@@ -149,7 +141,6 @@ pandas = ["pandas"]
 regexes = []
 seaborn = ["seaborn"]
 web-scraping = ["web-scraping"]
-xarray = ["xarray"]
 
 # This environment intentionally excludes the default feature (and therefore
 # its Python 3.12 constraint); it is only for the historical Bokeh notebook.
