@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository is organized by topic rather than as a single Python package. Each top-level directory contains examples, notebooks, and supporting data for one subject area: `pandas/`, `polars/`, `duckdb/`, `gis/`, `networkx/`, `web-scraping/`, `altair/`, `holoviews/`, `regexes/`, `seaborn/`, `xarray/`, and `db-access/`. Keep source files close to the material they support. Store sample datasets in local `data/` or `Data/` folders, and keep generated visuals or screenshots beside the notebook that uses them.
+This repository is organized by topic rather than as a single Python package. Each top-level directory contains examples, notebooks, and supporting data for one subject area: `pandas/`, `polars/`, `duckdb/`, `oscillator/`, `gis/`, `networkx/`, `web-scraping/`, `altair/`, `holoviews/`, `regexes/`, `seaborn/`, `xarray/`, and `db-access/`. Keep source files close to the material they support. Store sample datasets in local `data/` or `Data/` folders, and keep generated visuals or screenshots beside the notebook that uses them.
 
 ## Build, Test, and Development Commands
 There is no root build system or unified test runner. Use the command that matches the material you changed:

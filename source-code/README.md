@@ -13,6 +13,8 @@ to create it.  There is some material not covered in the presentation as well.
   visualizations.
 * [`networkx`](networkx): illustration of using the networkx library for graph
   representation and algorithms.
+* [`oscillator`](oscillator): generated ensemble of driven, damped oscillator
+  simulations for analytical queries with DuckDB and dataframe libraries.
 * [`pandas`](pandas): illustrations of using pandas and seaborn.
 * [`polars`](polars): Kllustrations of using polars.
 * [`duckdb`](duckdb): illustrations of using DuckDB for SQL queries.
@@ -21,8 +23,6 @@ to create it.  There is some material not covered in the presentation as well.
 * [`seaborn`](seaborn): illustrations of using Seaborn to create plots.
 * [`web-scraping`](web-scraping): illustration of web scraping using beautiful
   soup and graph representation using networkx.
-* [`xarray`](xarray): illustrates the xarray library for pandas-like operations
-  on multi-dimensional arrays.
 1. [pandas vs. polars vs. sQL cheatsheet`](PANDAS_POLARS_SQL_CHEATSHEET.md): A
    cheatsheet comparing the syntax of Pandas, Polars, and SQL for common data
    manipulation tasks. This can be a helpful reference when working with
